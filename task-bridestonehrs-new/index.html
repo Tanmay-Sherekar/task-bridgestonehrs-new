@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BridgestoneHRS Programmer Challenge</title>
+    <style>
+        body{color:#fff;background-color:#adbaaa;}
+        form {font-size:20px;color:blue;border-radius:30px;border:6px solid #000;width:300px;padding:40px;}
+    </style>
+  </head>
+  <body>
+    <h2 style="color:green">Upload Patient Data</h2>
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+      <label for="csv_file">Choose CSV File:</label>
+      <input type="file" name="csv_file" id="csv_file" required /><br /><br />
+      <button type="submit">Upload and Insert Data</button>
+    </form>
+  </body>
+</html>

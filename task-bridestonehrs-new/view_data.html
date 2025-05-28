@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Patient Data</title>
+    <!--css-->
+    <style>
+        th{font-size:20px;background-color:rgb(211, 191, 155);color:#9b1b1b;}
+
+        tr{font-size:20px;background-color: bisque;}
+    </style>
+    <!--css ends-->
+
+    <!--Javascript-->
+    <script>
+        // Function to fetch data from the server and display it
+        function fetchData() {
+            fetch('display_data.php')
+                .then(response => response.json())
+                .then(data => {
+                    let tableContent = '<table border="1"><tr><th>Patient Name</th><th>Patient Account</th><th>Payment Date</th><th>Service Date</th><th>Code</th><th>Billed Amount</th></tr>';
+
+                    data.forEach(row => {
+                        tableContent += `<tr>
+                                            <td>${row.patient_name}</td>
+                                            <td>${row.patient_account}</td>
+                                            <td>${row.payment_date}</td>
+                                            <td>${row.service_date}</td>
+                                            <td>${row.code}</td>
+                                            <td>${row.billed_amount}</td>
+                                          </tr>`;
+                    });
+
+                    tableContent += '</table>';
+                    document.getElementById('dataTable').innerHTML = tableContent;
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+
+        // Fetch data when the page loads
+        window.onload = fetchData;
+    </script>
+</head>
+<body>
+<a href="index.html">Back</a>
+<h2>Patient Data</h2>
+<div id="dataTable"></div>
+
+</body>
+</html>
